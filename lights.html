@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Neon Lights</title>
     <style>
-      * { margin: 0; padding; 0; }
+      * { margin: 0; padding: 0; }
       #lobby {
         position: absolute;
         top: 50%;
@@ -25,9 +25,11 @@
       <script src="./third-party/equalizer.js"></script>
       <script>
 
+        var isLocal = /localhost/i.test(window.location.href);
+        var root = isLocal ? './assets' : '//storage.googleapis.com/archive.jono.fyi/projects/within/under-neon-lights/assets';
         var vector3 = new THREE.Vector3();
-        var equalizer = new Equalizer();
-        var song = new Sound('./assets/audio/03 Under Neon Lights.mp3', setup);
+        var equalizer = new Equalizer(Sound.ctx);
+        var song = new Sound(root + '/audio/03-Under-Neon-Lights.mp3', setup);
 
         var renderer = new THREE.WebGLRenderer({ antialias: true });
         var scene = new THREE.Scene();
@@ -43,6 +45,8 @@
         var lights = [];
 
         function setup() {
+
+          equalizer.add(song.gain);
 
           renderer.shadowMap.enabled = true;
           renderer.shadowMap.type = THREE.PCFSoftShadowMap;
@@ -87,11 +91,11 @@
 
           scene.add(sphere);
 
-          equalizer.two.renderer.domElement.style.position = 'fixed';
-          equalizer.two.renderer.domElement.style.display = 'block';
-          equalizer.two.renderer.domElement.style.bottom = 20 + 'px';
-          equalizer.two.renderer.domElement.style.right = 20 + 'px';
-          equalizer.two.renderer.domElement.style.position = 'fixed';
+          equalizer.domElement.style.position = 'fixed';
+          equalizer.domElement.style.display = 'block';
+          equalizer.domElement.style.bottom = 20 + 'px';
+          equalizer.domElement.style.right = 20 + 'px';
+          equalizer.domElement.style.position = 'fixed';
 
           renderer.domElement.style.position = 'fixed';
           renderer.domElement.style.display = 'block';

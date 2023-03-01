@@ -15,28 +15,16 @@ window.NeonLights = (function() {
   var annie = new Annie();
   var forest = new Forest();
 
-  Equalizer.Resolution = 16;
-  var timeline = new Equalizer.Timeline();
+  // var timeline = new Equalizer.Timeline();
   var time = 0;
 
-  var isLocal = /localhost/i.test(window.location.href)
-  var root = isLocal ? './assets' : '//player-dev.cabrilleros.com/NEON_LIGHTS/assets';
+  var isLocal = /localhost/i.test(window.location.href);
+  var root = isLocal ? './assets' : '//storage.googleapis.com/archive.jono.fyi/projects/within/under-neon-lights/assets';
   var filetype = has.Chromium ? 'ogg' : 'mp3';
-  var path = [root, '/audio/03 Under Neon Lights.', filetype]
+  var path = [root, '/audio/03-Under-Neon-Lights.', filetype]
     .join('');
 
-  var sound = new Sound(path, function() {
-
-    var path = [root, '/json/03 Under Neon Lights ', Equalizer.Resolution,
-      '.json'].join('');
-
-    xhr.get(path, function(resp) {
-      var data = JSON.parse(resp);
-      timeline.analyze(sound, data);
-      setup();
-    });
-
-  });
+  var sound = new Sound(path, setup);
 
   function setup() {
 
@@ -52,19 +40,19 @@ window.NeonLights = (function() {
 
     if (DEBUG) {
 
-      timeline.container = document.createElement('div');
-      timeline.container.classList.add('timeline');
+    //   timeline.container = document.createElement('div');
+    //   timeline.container.classList.add('timeline');
 
-      Equalizer.Utils.extend(timeline.container.style, {
-        position: 'absolute',
-        top: 20 + 'px',
-        left: 20 + 'px',
-        paddingTop: 10 + 'px',
-        background: Equalizer.Colors.white
-      });
+    //   Equalizer.Utils.extend(timeline.container.style, {
+    //     position: 'absolute',
+    //     top: 20 + 'px',
+    //     left: 20 + 'px',
+    //     paddingTop: 10 + 'px',
+    //     background: Equalizer.Colors.white
+    //   });
 
-      timeline.appendTo(timeline.container, true);
-      $elems.append(timeline.container);
+    //   timeline.appendTo(timeline.container, true);
+    //   $elems.append(timeline.container);
 
     }
 
@@ -137,7 +125,7 @@ window.NeonLights = (function() {
     }
 
     if (DEBUG) {
-      timeline.update();
+      // timeline.update();
     } else {
       // TODO: Update timeline track data based on current time...
       // Maybe not necessary?
@@ -190,7 +178,7 @@ window.NeonLights = (function() {
     annie: annie,
     cameras: cameras,
     forest: forest,
-    timeline: timeline
+    // timeline: timeline
   };
 
 })();
