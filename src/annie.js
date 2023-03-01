@@ -97,6 +97,7 @@
     }
 
     this.camera.rotation.x = this.ghost.rotation.x;
+    this.camera.rotation.z = this.ghost.rotation.z;
 
     return this;
 

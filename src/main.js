@@ -79,7 +79,7 @@ window.NeonLights = (function() {
     window.addEventListener('resize', resize, false);
     resize();
 
-    if (navigator.getVRDisplays || has.mobile) {
+    if (!url.boolean('mono') && (navigator.getVRDisplays || has.mobile)) {
       renderer.effect = new THREE[!navigator.getVRDisplays ? 'StereoEffect' : 'VREffect'](renderer);
     } else {
       renderer.effect = renderer;
