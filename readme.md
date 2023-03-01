@@ -1,6 +1,6 @@
 # Under Neon Lights Prototypes
 
-Early prototypes that evolved into the interactive VR music video, [Under Neon Lights](https://jonobr1.github.io/neon-lights), produced by Within Unlimited Inc.
+Early prototypes that evolved into the interactive VR music video, [Under Neon Lights](https://jonobr1.github.io/neon-lights), produced by Within Unlimited Inc. Each html file is a self contained idea.
 
 ## Issues
 
