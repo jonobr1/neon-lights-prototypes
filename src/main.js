@@ -19,7 +19,7 @@ window.NeonLights = (function() {
   var time = 0;
 
   var isLocal = /localhost/i.test(window.location.href);
-  var root = isLocal ? './assets' : '//storage.googleapis.com/archive.jono.fyi/projects/within/under-neon-lights/assets';
+  var root = isLocal ? './assets' : '//archive.jono.fyi/projects/within/under-neon-lights/assets';
   var filetype = has.Chromium ? 'ogg' : 'mp3';
   var path = [root, '/audio/03-Under-Neon-Lights.', filetype]
     .join('');
